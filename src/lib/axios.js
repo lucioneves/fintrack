@@ -2,11 +2,15 @@ import axios from 'axios'
 
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from '@/constants/local-storage'
 
+export const protectedApi = axios.create({
+  baseURL: 'https://fullstackclub-finance-dashboard-api.onrender.com/api',
+})
+
 export const publicApi = axios.create({
   baseURL: 'https://fullstackclub-finance-dashboard-api.onrender.com/api',
 })
 
-publicApi.interceptors.request.use((request) => {
+protectedApi.interceptors.request.use((request) => {
   const accessToken = localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY)
   if (!accessToken) {
     return request
