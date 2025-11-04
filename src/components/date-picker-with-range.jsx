@@ -60,6 +60,7 @@ export const DatePickerWithRange = ({
             onSelect={onChange}
             initialFocus
             numberOfMonths={2}
+            locale={ptBR}
           />
         </PopoverContent>
       </Popover>
