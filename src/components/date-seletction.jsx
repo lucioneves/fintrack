@@ -20,8 +20,8 @@ const getInitialDataState = (searchParams) => {
   if (!from || !to) {
     return defaultDate
   }
-  const dateAreIsvalid = !isValid(new Date(from)) || !isValid(new Date(to))
-  if (dateAreIsvalid) {
+  const dateAreInvalid = !isValid(new Date(from)) || !isValid(new Date(to))
+  if (dateAreInvalid) {
     return defaultDate
   }
   return {
