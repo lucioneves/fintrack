@@ -30,7 +30,14 @@ const DateSelection = () => {
     queryParams.set('from', formatDateToQueryParam(date.from))
     queryParams.set('to', formatDateToQueryParam(date.to))
     navigate(`/?${queryParams.toString()}`)
-    queryClient.invalidateQueries({ queryKey: ['balance', user.id] })
+    queryClient.invalidateQueries({
+      queryKey: [
+        'balance',
+        user.id,
+        formatDateToQueryParam(date.from),
+        formatDateToQueryParam(date.to),
+      ],
+    })
   }, [navigate, date, queryClient, user.id])
 
   return <DatePickerWithRange value={date} onChange={setDate} />
