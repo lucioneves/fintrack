@@ -1,10 +1,8 @@
 'use client'
 
-import 'react'
-
 import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
-import { CalendarIcon } from 'lucide-react'
+import { ptBR } from 'date-fns/locale/pt-BR'
+import { Calendar as CalendarIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -37,7 +35,10 @@ export const DatePickerWithRange = ({
             {value?.from ? (
               value.to ? (
                 <>
-                  {format(value.from, 'LLL dd, y', { locale: ptBR })} -{' '}
+                  {format(value.from, 'LLL dd, y', {
+                    locale: ptBR,
+                  })}{' '}
+                  -{' '}
                   {format(value.to, 'LLL dd, y', {
                     locale: ptBR,
                   })}
@@ -54,13 +55,12 @@ export const DatePickerWithRange = ({
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           <Calendar
-            mode="range"
-            selected={value}
-            defaultMonth={value?.from}
-            onSelect={onChange}
             initialFocus
+            mode="range"
+            defaultMonth={value?.from}
+            selected={value}
+            onSelect={onChange}
             numberOfMonths={2}
-            locale={ptBR}
           />
         </PopoverContent>
       </Popover>
