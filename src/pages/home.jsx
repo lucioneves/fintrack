@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router'
 
-import AddTransictionButton from '@/components/add-transiction-button'
+import AddTransactionButton from '@/components/add-transaction-button'
 import Balance from '@/components/balance'
 import DateSelection from '@/components/date-seletction'
 import Header from '@/components/header'
@@ -20,7 +20,7 @@ const HomePage = () => {
           <h2 className="text-2xl">Dashboard</h2>
           <div className="flex items-center gap-2">
             <DateSelection />
-            <AddTransictionButton />
+            <AddTransactionButton />
           </div>
         </div>
         <div className="grid grid-cols-[2fr,1fr]">
