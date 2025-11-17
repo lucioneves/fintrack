@@ -1,7 +1,7 @@
-import { useMutation } from '@tanstack/react-query'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
+import { useLogin, useSignup } from '@/api/hooks/user'
 import { UserService } from '@/api/services/user'
 import {
   LOCAL_STORAGE_ACCESS_TOKEN_KEY,
@@ -31,21 +31,9 @@ const removeTokens = () => {
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState()
   const [isInitializing, setIsInitializing] = useState(true)
-  const SignupMutation = useMutation({
-    mutationKey: ['signup'],
-    mutationFn: async (variables) => {
-      const response = await UserService.signup(variables)
-      return response
-    },
-  })
+  const SignupMutation = useSignup()
 
-  const loginMutation = useMutation({
-    mutationKey: ['login'],
-    mutationFn: async (Variables) => {
-      const response = await UserService.login(Variables)
-      return response
-    },
-  })
+  const loginMutation = useLogin()
 
   useEffect(() => {
     const init = async () => {
