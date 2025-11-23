@@ -20,9 +20,9 @@ export const TrasactionService = {
    * Retorna as transações do usuário autenticado.
    * @param {Object} input
    * @param {string} input.from - Data inicial (YYYY-MM-DD).
-   * @param {number} input.amount - Data finl  (YYYY-MM-DD).
+   * @param {string} input.amount - Data finl  (YYYY-MM-DD).
    */
-  gatAll: (input) => {
+  getAll: async (input) => {
     const query = queryString.stringify({ from: input.from, to: input.to })
     const response = protectedApi.get(`/transactions/me?${query}`)
     return response.data
