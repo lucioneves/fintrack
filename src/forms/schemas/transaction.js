@@ -6,3 +6,7 @@ export const createTransactionFormSchema = z.object({
   date: z.date({ required_error: 'A data é obrigatória' }),
   type: z.enum(['EARNING', 'EXPENSE', 'INVESTMENT']),
 })
+
+export const editTransactionFormSchema = createTransactionFormSchema.extend({
+  id: z.string().uuid(),
+})
