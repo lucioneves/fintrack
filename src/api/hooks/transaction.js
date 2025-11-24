@@ -16,6 +16,10 @@ export const useCreateTransaction = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: getUserBalanceQueryKey({ userId: user.id }),
+        exact: false,
+      })
+      queryClient.invalidateQueries({
+        queryKey: getTransactionsQueryKey({ userId: user.id }),
       })
     },
   })
@@ -33,5 +37,6 @@ export const useGetTransactions = ({ from, to }) => {
   return useQuery({
     queryKey: getTransactionsQueryKey({ userId: user.id, from, to }),
     queryFn: () => TrasactionService.getAll({ from, to }),
+    enabled: Boolean(from) && Boolean(to) && Boolean(user.id),
   })
 }
