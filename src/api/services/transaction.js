@@ -42,7 +42,7 @@ export const TrasactionService = {
    * @param {string} input.type - Tipo da transação (EARNING, EXPENSE, INVESTMENT).
    */
   update: async (input) => {
-    const response = await protectedApi.get(`/transactions/me?${input.id}`, {
+    const response = await protectedApi.patch(`/transactions/me/${input.id}`, {
       name: input.name,
       date: input.date,
       amount: input.amount,
