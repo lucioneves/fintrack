@@ -1,7 +1,7 @@
 import { DropdownMenuContent } from '@radix-ui/react-dropdown-menu'
 import { ChevronDownIcon, LogOutIcon } from 'lucide-react'
 
-import logo from '@/assets/images/logo.svg'
+import logo from '@/assets/images/Logo.svg'
 import { useAuthContext } from '@/contexts/auth'
 
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
